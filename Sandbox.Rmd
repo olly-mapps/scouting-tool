@@ -1,0 +1,16 @@
+---
+title: "Sandbox"
+output: html_notebook
+author: "olly-mapps"
+---
+
+```{r}
+library(tidyverse)
+library(worldfootballR)
+```
+
+```{r}
+messi_primary <- fb_player_scouting_report(player_url = "https://fbref.com/en/players/d70ce98e/Lionel-Messi", pos_versus = "primary")
+dplyr::glimpse(messi_primary)
+```
+
