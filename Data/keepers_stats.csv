@@ -1,0 +1,145 @@
+"","Squad","Comp","Player","Nation","Pos","MP_Playing","Starts_Playing","Min_Playing","Mins_Per_90","GA","GA90","SoTA","Saves","Save_percent","W","D","L","CS","CS_percent","PKatt_Penalty","PKA_Penalty","PKsv_Penalty","PKm_Penalty","Save_percent_Penalty"
+"1","Ajaccio","Ligue 1","Benjamin Leroy","FRA","GK",63,63,62,62,95,83,68,51,8,39,46,100,32,13,97,99,56,97,56
+"3","Ajaccio","Ligue 1","François-Joseph Sollacaro","FRA","GK",11,12,11,11,17,94,7,6,2,12,13,22,19,31,16,26,56,77,56
+"4","Almería","La Liga","Fernando","ESP","GK",87,88,80,80,94,69,97,96,51,69,67,94,42,17,83,78,88,97,68
+"7","Angers","Ligue 1","Paul Bernardoni","FRA","GK",55,55,55,55,97,94,77,62,14,12,56,99,32,17,97,99,56,97,56
+"8","Angers","Ligue 1","Yahia Fofana","FRA","GK",19,20,19,19,23,78,18,15,19,23,13,41,19,15,38,26,88,77,96
+"9","Arsenal","Premier League","Aaron Ramsdale","ENG","GK",100,100,100,100,72,23,73,72,51,99,63,41,96,83,76,66,56,99,56
+"10","Aston Villa","Premier League","Emiliano Martínez","ARG","GK",87,88,76,76,62,19,70,74,74,89,67,76,86,65,76,78,88,77,68
+"11","Aston Villa","Premier League","Robin Olsen","SWE","GK",5,3,3,3,7,97,5,6,19,12,3,6,19,97,16,26,56,77,56
+"12","Atalanta","Serie A","Juan Musso","ARG","GK",44,44,44,44,40,27,43,47,58,77,46,46,65,61,38,56,56,77,56
+"13","Atalanta","Serie A","Marco Sportiello","ITA","GK",26,26,26,26,24,47,27,28,46,39,31,28,25,26,16,26,56,77,56
+"15","Athletic Club","La Liga","Unai Simón","ESP","GK",61,61,59,59,60,33,49,51,31,77,56,76,76,64,38,56,56,77,56
+"16","Atlético Madrid","La Liga","Ivo Grbić","CRO","GK",21,17,17,17,12,28,15,19,95,42,17,6,25,45,55,66,56,77,56
+"17","Atlético Madrid","La Liga","Jan Oblak","SVN","GK",56,56,56,56,26,3,36,41,83,89,56,41,86,88,38,26,56,97,56
+"18","Augsburg","Bundesliga","Rafał Gikiewicz","POL","GK",43,43,43,43,69,76,73,70,51,51,31,76,50,40,65,26,95,97,97
+"20","Auxerre","Ligue 1","Benoît Costil","FRA","GK",39,39,39,39,69,91,47,39,9,23,46,76,25,15,55,66,56,77,56
+"21","Auxerre","Ligue 1","Donovan Léon","GUF","GK",1,3,1,1,1,17,3,4,100,12,13,2,8,8,16,26,56,77,56
+"22","Auxerre","Ligue 1","Ionuț Radu","ROU","GK",31,31,31,31,20,18,31,35,79,31,63,41,50,68,38,3,95,77,100
+"24","Barcelona","La Liga","Marc-André ter Stegen","GER","GK",98,98,88,88,20,1,46,56,99,100,46,28,100,100,55,66,56,77,56
+"25","Bayern Munich","Bundesliga","Manuel Neuer","GER","GK",24,24,24,24,12,8,17,21,93,48,46,6,42,78,38,56,56,77,56
+"26","Bayern Munich","Bundesliga","Yann Sommer","SUI","GK",39,39,39,39,35,44,22,17,35,69,46,22,50,55,91,96,56,77,56
+"27","Bayern Munich","Bundesliga","Sven Ulreich","GER","GK",2,4,2,2,1,2,1,3,81,23,3,2,25,99,16,3,88,77,100
+"28","Betis","La Liga","Claudio Bravo","CHI","GK",21,22,21,21,7,4,14,19,97,39,46,12,42,83,16,26,56,77,56
+"29","Betis","La Liga","Rui Silva","POR","GK",49,49,49,49,52,35,50,53,53,72,46,65,76,79,38,56,56,77,56
+"30","Bochum","Bundesliga","Manuel Riemann","GER","GK",74,74,74,74,100,90,100,97,38,62,56,97,50,24,100,99,99,100,72
+"32","Bologna","Serie A","Łukasz Skorupski","POL","GK",87,88,87,87,81,44,83,88,73,72,97,76,65,38,97,96,95,77,69
+"33","Bournemouth","Premier League","Neto","BRA","GK",55,55,51,51,65,54,75,78,79,57,63,76,59,45,76,78,56,97,56
+"34","Bournemouth","Premier League","Mark Travers","IRL","GK",24,22,22,22,52,99,31,23,4,17,3,61,25,35,38,56,56,77,56
+"35","Brentford","Premier League","David Raya","ESP","GK",100,100,100,100,77,31,99,100,90,82,100,61,90,71,38,56,56,77,56
+"36","Brest","Ligue 1","Marco Bizot","NED","GK",87,88,87,87,85,53,93,93,65,69,90,83,70,45,93,91,95,77,72
+"38","Brighton","Premier League","Robert Sánchez","ESP","GK",43,43,43,43,46,42,34,33,26,69,56,46,59,54,83,88,88,77,62
+"39","Brighton","Premier League","Jason Steele","ENG","GK",28,28,28,28,32,60,24,23,12,48,31,28,59,90,38,26,88,77,96
+"40","Celta Vigo","La Liga","Agustín Marchesín","ARG","GK",39,39,39,39,44,60,33,29,16,39,56,61,59,71,65,56,95,77,96
+"41","Celta Vigo","La Liga","Iván Villar","ESP","GK",35,35,35,35,32,40,27,24,31,39,56,51,42,45,65,66,56,97,56
+"42","Chelsea","Premier League","Kepa Arrizabalaga","ESP","GK",58,58,56,56,54,26,60,67,65,51,85,76,76,67,16,26,56,77,56
+"44","Clermont Foot","Ligue 1","Mory Diaw","SEN","GK",87,88,87,87,76,36,85,85,83,86,78,76,81,60,99,96,100,77,84
+"46","Cremonese","Serie A","Marco Carnesecchi","ITA","GK",55,55,55,55,81,73,82,85,51,31,85,81,42,25,38,56,56,77,56
+"47","Cremonese","Serie A","Ionuț Radu","ROU","GK",16,17,16,16,24,89,30,31,81,5,31,41,19,17,55,66,56,77,56
+"49","Crystal Palace","Premier League","Vicente Guaita","ESP","GK",55,55,55,55,57,38,54,62,60,48,85,67,59,45,38,56,56,77,56
+"50","Crystal Palace","Premier League","Sam Johnstone","ENG","GK",16,17,16,16,8,21,13,14,84,31,31,12,32,78,38,56,56,77,56
+"52","Cádiz","La Liga","David Gil","ESP","GK",5,7,6,6,3,36,6,11,97,12,13,12,19,52,16,26,56,77,56
+"53","Cádiz","La Liga","Jeremías Ledesma","ARG","GK",69,69,69,69,81,52,94,95,89,57,90,81,90,83,97,99,88,77,57
+"54","Dortmund","Bundesliga","Gregor Kobel","SUI","GK",55,55,55,55,52,30,59,65,72,92,31,28,86,92,16,26,56,77,56
+"57","Eint Frankfurt","Bundesliga","Kevin Trapp","GER","GK",69,69,69,69,84,62,68,58,15,77,90,65,59,35,38,56,56,77,56
+"58","Elche","La Liga","Édgar Badía","ESP","GK",78,78,79,79,97,75,99,99,59,39,85,99,42,18,98,96,99,77,74
+"61","Empoli","Serie A","Guglielmo Vicario","ITA","GK",61,61,61,61,62,39,62,63,63,57,97,61,65,49,83,78,88,97,68
+"64","Espanyol","La Liga","Fernando Pacheco","ESP","GK",31,31,31,31,54,88,42,38,33,31,31,61,32,36,76,78,88,77,68
+"66","Everton","Premier League","Jordan Pickford","ENG","GK",98,98,98,98,93,62,96,94,55,48,97,94,70,40,83,88,88,77,62
+"70","Fiorentina","Serie A","Pietro Terracciano","ITA","GK",58,58,58,58,62,44,47,41,31,57,78,76,50,31,91,91,88,77,60
+"71","Freiburg","Bundesliga","Mark Flekken","NED","GK",74,74,74,74,74,40,81,85,73,89,78,61,93,88,83,88,56,97,56
+"72","Fulham","Premier League","Bernd Leno","GER","GK",87,88,87,87,84,52,98,99,87,82,56,87,70,45,93,96,88,77,58
+"74","Getafe","La Liga","David Soria","ESP","GK",98,98,98,98,76,33,90,92,82,62,92,87,90,72,93,78,100,77,96
+"75","Girona","La Liga","Juan Carlos","ESP","GK",19,20,19,19,23,78,16,14,17,17,17,41,8,8,38,56,56,77,56
+"76","Girona","La Liga","Paulo Gazzaniga","ARG","GK",55,55,55,55,58,42,57,60,70,69,78,51,42,25,83,78,88,97,68
+"77","Hellas Verona","Serie A","Lorenzo Montipò","ITA","GK",87,88,87,87,91,65,94,94,38,48,85,98,50,21,16,3,88,77,100
+"79","Hertha BSC","Bundesliga","Oliver Christensen","DEN","GK",69,69,69,69,99,88,88,72,12,42,78,97,32,12,83,88,88,77,62
+"81","Hoffenheim","Bundesliga","Oliver Baumann","GER","GK",74,74,74,74,93,71,88,83,24,62,63,94,50,24,55,56,56,97,56
+"82","Inter","Serie A","Samir Handanović","SVN","GK",24,26,25,25,23,48,19,20,22,51,3,28,42,66,16,26,56,77,56
+"83","Inter","Serie A","André Onana","CMR","GK",44,44,45,45,35,17,38,43,67,81,31,46,70,78,38,56,56,77,56
+"84","Juventus","Serie A","Mattia Perin","ITA","GK",21,20,20,20,5,1,15,20,99,39,31,12,59,99,38,26,88,77,96
+"85","Juventus","Serie A","Wojciech Szczęsny","POL","GK",55,55,50,51,37,14,44,47,76,86,31,51,93,96,55,66,56,77,56
+"86","Köln","Bundesliga","Marvin Schwäbe","GER","GK",74,74,74,74,87,67,66,56,11,62,97,76,59,34,76,78,88,77,68
+"88","Lazio","Serie A","Ivan Provedel","ITA","GK",98,88,89,89,46,6,65,76,88,94,78,51,99,98,38,26,56,97,56
+"89","Lecce","Serie A","Wladimiro Falcone","ITA","GK",98,98,98,98,72,26,81,88,77,51,97,88,59,29,83,88,88,77,62
+"90","Leeds United","Premier League","Illan Meslier","FRA","GK",74,74,74,74,99,82,86,69,6,48,85,94,50,24,55,66,56,77,56
+"91","Leeds United","Premier League","Joel Robles","ESP","GK",5,7,6,6,12,99,10,9,31,5,13,17,8,8,55,56,56,97,56
+"92","Leicester City","Premier League","Daniel Iversen","DEN","GK",24,24,24,24,28,79,25,26,26,17,46,41,19,11,38,56,56,77,56
+"93","Leicester City","Premier League","Danny Ward","WAL","GK",49,49,49,49,77,75,59,54,17,48,31,87,59,48,55,56,88,77,83
+"94","Lens","Ligue 1","Brice Samba","FRA","GK",98,98,98,98,42,5,64,76,94,97,85,22,98,91,55,66,56,77,56
+"95","Leverkusen","Bundesliga","Lukáš Hrádecký","FIN","GK",69,69,67,69,81,52,76,74,56,81,78,67,76,58,91,96,56,77,56
+"97","Lille","Ligue 1","Leonardo César Jardim","BRA","GK",11,12,11,11,15,92,3,2,1,23,13,12,8,8,38,56,56,77,56
+"98","Lille","Ligue 1","Lucas Chevalier","FRA","GK",63,63,63,63,46,13,49,53,62,86,78,46,81,72,55,56,88,77,83
+"99","Liverpool","Premier League","Alisson","BRA","GK",98,98,98,98,72,26,80,83,59,92,85,61,96,85,65,56,88,97,83
+"101","Lorient","Ligue 1","Vito Mannone","ITA","GK",35,33,33,33,35,45,38,42,63,31,63,46,50,62,16,26,56,77,56
+"102","Lorient","Ligue 1","Yvon Mvogo","SUI","GK",40,40,40,40,42,53,46,47,48,62,46,41,32,26,16,26,56,77,56
+"103","Lyon","Ligue 1","Anthony Lopes","POR","GK",63,63,62,62,60,30,64,67,85,86,46,67,65,46,91,96,56,77,56
+"104","Lyon","Ligue 1","Rémy Riou","FRA","GK",12,12,12,12,7,31,7,10,98,17,46,2,19,31,65,78,56,77,56
+"105","M'Gladbach","Bundesliga","Jan Jakob Olschowsky","GER","GK",5,7,6,6,12,99,12,12,37,12,13,12,8,8,16,26,56,77,56
+"106","M'Gladbach","Bundesliga","Jonas Omlin","SUI","GK",28,28,27,27,23,38,23,26,56,39,46,41,50,78,38,56,56,77,56
+"107","M'Gladbach","Bundesliga","Tobias Sippel","GER","GK",11,8,8,8,13,90,12,12,31,12,13,17,19,38,16,26,56,77,56
+"108","M'Gladbach","Bundesliga","Yann Sommer","SUI","GK",19,20,19,19,17,49,27,33,94,31,46,12,32,64,38,56,56,77,56
+"109","Mainz 05","Bundesliga","Finn Dahmen","GER","GK",13,14,13,13,18,85,17,15,25,23,17,17,8,8,55,26,95,77,97
+"110","Mainz 05","Bundesliga","Robin Zentner","GER","GK",49,49,49,49,65,56,53,51,33,57,78,61,65,56,76,66,88,97,72
+"112","Mallorca","La Liga","Predrag Rajković","SRB","GK",87,88,87,87,67,21,71,69,76,77,78,83,90,78,91,91,88,77,60
+"113","Manchester City","Premier League","Ederson","BRA","GK",78,78,79,79,52,7,35,33,15,99,46,28,86,69,55,66,56,77,56
+"115","Manchester Utd","Premier League","David de Gea","ESP","GK",100,100,100,100,72,23,76,77,53,96,63,61,99,94,55,56,88,77,83
+"117","Marseille","Ligue 1","Pau López","ESP","GK",65,65,65,65,54,17,62,67,86,95,46,46,81,68,76,88,56,77,56
+"118","Milan","Serie A","Mike Maignan","FRA","GK",40,40,40,40,26,12,28,27,49,62,67,22,70,87,55,56,88,77,83
+"119","Milan","Serie A","Ciprian Tătărușanu","ROU","GK",31,31,31,31,28,47,28,27,35,57,31,22,42,52,38,56,56,77,56
+"120","Monaco","Ligue 1","Alexander Nübel","GER","GK",98,98,98,98,91,58,97,99,64,92,78,65,76,50,76,88,56,77,56
+"122","Montpellier","Ligue 1","Bingourou Kamara","SEN","GK",8,7,7,7,12,95,8,6,8,5,13,17,8,8,55,26,88,97,96
+"123","Montpellier","Ligue 1","Benjamin Lecomte","FRA","GK",35,35,35,35,27,27,46,49,92,57,31,41,70,93,65,56,95,77,96
+"124","Montpellier","Ligue 1","Jonas Omlin","SUI","GK",26,26,24,25,37,85,33,35,39,39,13,51,25,22,65,66,88,77,72
+"126","Monza","Serie A","Michele Di Gregorio","ITA","GK",87,88,87,87,74,33,85,90,72,81,90,76,81,60,55,66,56,77,56
+"128","Nantes","Ligue 1","Alban Lafont","FRA","GK",87,88,81,87,87,56,95,97,80,42,100,87,81,60,97,99,56,77,56
+"130","Napoli","Serie A","Alex Meret","ITA","GK",69,69,69,69,35,4,42,44,69,97,56,17,98,94,38,26,88,77,96
+"132","Newcastle Utd","Premier League","Nick Pope","ENG","GK",98,98,88,88,52,6,57,62,79,92,99,28,96,85,76,56,95,97,96
+"134","Nice","Ligue 1","Kasper Schmeichel","DEN","GK",78,78,79,79,57,13,72,77,85,81,97,61,86,69,76,66,88,97,72
+"135","Nott'ham Forest","Premier League","Dean Henderson","ENG","GK",35,35,35,35,48,72,39,37,25,39,56,51,59,78,76,56,95,97,96
+"137","Nott'ham Forest","Premier League","Keylor Navas","CRC","GK",33,33,31,33,52,80,38,36,27,31,46,61,19,10,65,78,56,77,56
+"139","Osasuna","La Liga","Sergio Herrera","ESP","GK",33,33,33,33,32,46,32,35,42,39,31,61,32,34,65,26,88,99,96
+"140","Paris S-G","Ligue 1","Gianluigi Donnarumma","ITA","GK",98,98,98,98,60,17,85,92,88,99,46,41,93,80,65,56,88,97,83
+"141","RB Leipzig","Bundesliga","Janis Blaswich","GER","GK",49,49,49,49,44,22,35,31,42,86,46,41,65,56,91,91,88,77,60
+"142","RB Leipzig","Bundesliga","Péter Gulácsi","HUN","GK",11,12,11,11,8,70,9,10,23,17,17,12,25,78,16,26,56,77,56
+"144","Rayo Vallecano","La Liga","Stole Dimitrievski","MKD","GK",87,88,87,87,81,44,74,72,40,77,90,78,76,52,76,78,56,97,56
+"146","Real Madrid","La Liga","Thibaut Courtois","BEL","GK",61,61,61,61,42,11,53,59,90,94,46,41,81,78,65,78,56,77,56
+"148","Real Sociedad","La Liga","Álex Remiro","ESP","GK",98,98,98,98,57,8,66,73,76,94,78,61,98,91,38,26,88,77,96
+"149","Reims","Ligue 1","Yehvann Diouf","FRA","GK",61,61,61,61,42,11,68,81,92,69,97,46,96,95,16,26,56,77,56
+"150","Reims","Ligue 1","Patrick Pentz","AUT","GK",12,12,12,12,17,85,10,9,6,12,31,17,8,8,38,56,56,77,56
+"151","Rennes","Ligue 1","Doğan Alemdar","TUR","GK",8,4,4,4,5,83,3,1,1,12,3,12,19,78,16,3,88,77,100
+"152","Rennes","Ligue 1","Steve Mandanda","FRA","GK",74,74,70,70,48,11,53,57,69,92,56,65,90,81,55,56,88,77,83
+"153","Roma","Serie A","Rui Patrício","POR","GK",78,78,79,79,58,17,51,53,43,89,78,65,93,84,55,56,88,77,83
+"156","Salernitana","Serie A","Guillermo Ochoa","MEX","GK",39,39,39,39,48,69,48,51,55,31,90,28,42,39,55,56,88,77,83
+"157","Salernitana","Serie A","Luigi Sepe","ITA","GK",33,33,33,33,40,67,42,40,69,31,56,51,32,34,91,78,99,77,86
+"158","Sampdoria","Serie A","Emil Audero","ITA","GK",47,47,47,47,65,65,61,60,58,17,63,88,42,28,91,88,95,77,73
+"159","Sampdoria","Serie A","Nicola Ravaglia","ITA","GK",16,17,16,16,32,97,30,28,35,5,31,41,8,8,38,56,56,77,56
+"161","Sassuolo","Serie A","Andrea Consigli","ITA","GK",78,78,79,79,88,65,56,47,5,72,78,83,76,53,55,66,56,77,56
+"162","Sassuolo","Serie A","Gianluca Pegolo","ITA","GK",1,3,1,1,2,56,1,1,31,5,13,6,8,8,16,26,56,77,56
+"163","Schalke 04","Bundesliga","Ralf Fährmann","GER","GK",24,24,22,22,15,24,22,30,91,23,63,17,50,92,38,26,56,97,56
+"164","Schalke 04","Bundesliga","Alexander Schwolow","GER","GK",43,42,42,42,94,97,75,58,10,31,46,81,25,12,65,78,56,77,56
+"165","Sevilla","La Liga","Yassine Bounou","MAR","GK",47,47,44,44,69,72,51,47,19,48,63,76,42,28,55,56,88,77,83
+"167","Southampton","Premier League","Gavin Bazunu","IRL","GK",65,65,65,65,91,74,60,48,3,42,63,98,42,20,38,26,88,77,96
+"168","Southampton","Premier League","Alex McCarthy","ENG","GK",11,12,11,11,20,100,11,8,3,5,13,28,8,8,16,26,56,77,56
+"169","Spezia","Serie A","Bartłomiej Drągowski","POL","GK",74,74,66,66,87,69,89,89,44,42,90,94,59,34,83,78,88,97,68
+"173","Strasbourg","Ligue 1","Matz Sels","BEL","GK",98,98,98,98,93,62,92,90,62,57,99,83,59,29,99,100,56,97,56
+"174","Stuttgart","Bundesliga","Fabian Bredlow","GER","GK",28,28,28,28,32,60,25,24,44,31,56,41,19,10,76,88,56,77,56
+"175","Stuttgart","Bundesliga","Florian Müller","GER","GK",39,39,39,39,57,77,42,38,13,23,67,61,19,9,16,26,56,77,56
+"176","Torino","Serie A","Vanja Milinković-Savić","SRB","GK",98,98,98,98,67,19,70,69,67,81,92,76,86,62,83,88,56,97,56
+"177","Tottenham","Premier League","Fraser Forster","ENG","GK",26,26,26,26,35,76,22,17,8,39,31,28,32,48,55,56,88,77,83
+"178","Tottenham","Premier League","Hugo Lloris","FRA","GK",47,47,46,46,65,67,56,57,36,77,31,61,65,60,16,26,56,77,56
+"179","Toulouse","Ligue 1","Maxime Dupé","FRA","GK",98,98,98,98,91,58,92,91,45,72,85,87,76,50,91,78,99,77,86
+"180","Troyes","Ligue 1","Gauthier Gallon","FRA","GK",58,58,57,57,98,93,91,88,22,23,78,94,8,8,76,88,56,77,56
+"181","Troyes","Ligue 1","Mateusz Lis","POL","GK",16,14,14,14,18,81,20,22,62,12,31,22,19,20,55,56,88,77,83
+"182","Udinese","Serie A","Marco Silvestri","ITA","GK",98,98,98,98,81,39,70,64,41,69,99,78,81,57,91,91,56,97,56
+"183","Union Berlin","Bundesliga","Lennart Grill","GER","GK",8,8,8,8,12,92,8,8,20,17,13,12,25,90,38,56,56,77,56
+"184","Union Berlin","Bundesliga","Frederik Rønnow","DEN","GK",58,58,58,58,40,11,59,69,96,86,67,41,86,86,76,88,56,77,56
+"185","Valencia","La Liga","Giorgi Mamardashvili","GEO","GK",98,98,98,98,74,30,78,81,52,69,78,94,65,37,76,56,56,100,56
+"187","Valladolid","La Liga","Sergio Asenjo","ESP","GK",19,20,19,19,27,88,20,17,10,17,17,41,19,15,16,26,56,77,56
+"188","Valladolid","La Liga","Jordi Masip","ESP","GK",55,55,51,51,69,65,78,78,74,57,46,81,65,53,97,88,99,97,85
+"190","Villarreal","La Liga","Pepe Reina","ESP","GK",41,42,41,41,40,35,42,43,69,77,31,41,50,47,65,78,56,77,56
+"192","Werder Bremen","Bundesliga","Jiří Pavlenka","CZE","GK",69,69,65,65,96,81,91,88,22,62,56,94,42,19,55,56,88,77,83
+"194","West Ham","Premier League","Alphonse Areola","FRA","GK",8,3,3,3,5,86,4,4,40,5,13,6,19,97,38,56,56,77,56
+"195","West Ham","Premier League","Łukasz Fabiański","POL","GK",87,88,75,75,83,49,83,85,47,69,63,97,70,45,65,56,88,97,83
+"196","Wolfsburg","Bundesliga","Koen Casteels","BEL","GK",74,74,74,74,83,50,80,79,47,77,90,67,90,81,91,78,88,99,68
+"198","Wolves","Premier League","José Sá","POR","GK",87,88,87,87,88,60,88,83,33,69,67,94,86,65,65,56,95,77,96

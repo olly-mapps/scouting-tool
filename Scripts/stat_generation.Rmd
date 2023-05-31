@@ -1,0 +1,135 @@
+---
+title: "Sandbox"
+output: html_notebook
+author: "olly-mapps"
+---
+
+Contained in this notebook is the sandbox for code that I plan to use for a football scouting tool 
+
+
+# Libraries
+```{r}
+library(tidyverse)
+library(worldfootballR)
+```
+
+# Data Loading
+
+We first define stat types to extract from worldsoccerR
+
+```{r}
+#Define stat types
+stat_types = c("standard", "shooting", "passing", "passing_types", "gca", "defense", "possession", "playing_time", "misc", "keepers", "keepers_adv")
+```
+
+We next define a loop to extract these data based on the stat type
+
+```{r}
+#Define loop to iterate through the stat types
+for (type in stat_types){
+  
+  #Load the data for the specific type
+  temp <- data.frame(load_fb_big5_advanced_season_stats(season_end_year = 2023, stat_type = type, 
+                                             team_or_player = "player"))
+  #Print type to assess progress
+  print(type)
+  
+  #Assign the data a suitable name
+  assign(paste(type, "_raw", sep = ""), get("temp"))
+}
+```
+
+There are numeric columns that we don't need, so we drop them here
+
+```{r}
+#Define columns to leave out 
+not_columns <- c("Season_End_Year", "Age", "Born", "Url", "Prog", "A_minus_xA")
+
+#Select only columns that we need
+player_standard <- standard_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_shooting <- shooting_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_passing <- passing_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_gca <- gca_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_defense <- defense_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_possession <- possession_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_playing_time <- playing_time_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_misc <- misc_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_keepers <- keepers_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+
+player_keepers_adv <- keepers_adv_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+```
+
+# Converting to Stats
+
+We next convert each column of each data-frame to percentiles, which we can imagine as standardized
+'attributes'
+
+```{r}
+
+#Loop converting stat columns to percentile ranks
+for (col in colnames(dplyr::select(player_standard, where(is.numeric)))){
+  player_standard[col] <- round(cume_dist(player_standard[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_shooting, where(is.numeric)))){
+  player_shooting[col] <- round(cume_dist(player_shooting[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_passing, where(is.numeric)))){
+  player_passing[col] <- round(cume_dist(player_passing[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_gca, where(is.numeric)))){
+  player_gca[col] <- round(cume_dist(player_gca[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_defense, where(is.numeric)))){
+  player_defense[col] <- round(cume_dist(player_defense[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_possession, where(is.numeric)))){
+  player_possession[col] <- round(cume_dist(player_possession[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_playing_time, where(is.numeric)))){
+  player_playing_time[col] <- round(cume_dist(player_playing_time[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_misc, where(is.numeric)))){
+  player_misc[col] <- round(cume_dist(player_misc[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_keepers, where(is.numeric)))){
+  player_keepers[col] <- round(cume_dist(player_keepers[col])*100)
+}
+
+for (col in colnames(dplyr::select(player_keepers_adv, where(is.numeric)))){
+  player_keepers_adv[col] <- round(cume_dist(player_keepers_adv[col])*100)
+}
+```
+
+#Write to csv
+
+We finally write or dataframes to .csv files
+
+```{r}
+write.csv(player_standard, "../Data/standard_stats.csv")
+write.csv(player_shooting, "../Data/shooting_stats.csv")
+write.csv(player_passing, "../Data/passing_stats.csv")
+write.csv(player_gca, "../Data/gca_stats.csv")
+write.csv(player_defense, "../Data/defense_stats.csv")
+write.csv(player_possession, "../Data/possession_stats.csv")
+write.csv(player_playing_time, "../Data/playing_time_stats.csv")
+write.csv(player_misc, "../Data/misc_stats.csv")
+write.csv(player_keepers, "../Data/keepers_stats.csv")
+write.csv(player_keepers_adv, "../Data/keepers_adv_stats.csv")
+```
+
