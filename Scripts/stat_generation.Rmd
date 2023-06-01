@@ -34,8 +34,6 @@ for (type in stat_types){
   #Print type to assess progress
   print(type)
   
-  temp["Season_End_Year"] <- as.character(temp["Season_End_Year"])
-  
   #Assign the data a suitable name
   assign(paste(type, "_stats", sep = ""), get("temp"))
 }
@@ -45,13 +43,14 @@ There are numeric columns that we don't need, so we drop them here. We also drop
 
 ```{r}
 #Define columns to leave out 
-not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP")
+not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP", "Season_End_Year")
 
 type_list_raw <- list(standard_stats, shooting_stats, passing_stats, passing_types_stats, gca_stats, defense_stats, possession_stats, playing_time_stats, misc_stats, keepers_stats, keepers_adv_stats)
 
 type_list <- lapply(type_list_raw, function(x) x %>% 
                       dplyr::select(-any_of(not_columns)) %>% 
                       na.omit(.))
+
 
 type_list <- setNames(type_list, stat_types)
 ```
@@ -63,7 +62,7 @@ We next convert each column of each data-frame to percentiles, which we can imag
 
 ```{r}
 for (type in stat_types){
-  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric), -Season_End_Year))){
+  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric)))){
     type_list[[type]][col] <- round(cume_dist(type_list[[type]][col])*100)
   }
 }
@@ -86,10 +85,6 @@ transferred_player
 ```
 
 ```{r}
-test %>% dplyr::filter(test["Season_End_Year"] == 2023)
-```
-
-```{r}
 messi <- transferred_player %>% dplyr::filter(transferred_player["Player"] == "Lionel Messi")
 ```
 
@@ -97,12 +92,13 @@ We wish to find averages of the statistics at each club, which we can then use t
 
 ```{r}
 #First we calculate averages across each team the player has played for
-messi %>% group_by(Squad, Player, Comp) %>% 
+messi <- messi %>% group_by(Squad, Player, Comp) %>% 
           summarise(across(where(is.numeric), mean),
                     .groups = 'drop')
 ```
-```{r}
 
+```{r}
+diff(as.matrix(dplyr::select(messi, where(is.numeric))), lag = 1)
 ```
 
 #Write to csv
