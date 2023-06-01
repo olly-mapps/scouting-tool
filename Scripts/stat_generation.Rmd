@@ -29,42 +29,31 @@ We next define a loop to extract these data based on the stat type
 for (type in stat_types){
   
   #Load the data for the specific type
-  temp <- data.frame(load_fb_big5_advanced_season_stats(season_end_year = 2023, stat_type = type, 
+  temp <- data.frame(load_fb_big5_advanced_season_stats(stat_type = type, 
                                              team_or_player = "player"))
   #Print type to assess progress
   print(type)
   
+  temp["Season_End_Year"] <- as.character(temp["Season_End_Year"])
+  
   #Assign the data a suitable name
-  assign(paste(type, "_raw", sep = ""), get("temp"))
+  assign(paste(type, "_stats", sep = ""), get("temp"))
 }
 ```
 
-There are numeric columns that we don't need, so we drop them here
+There are numeric columns that we don't need, so we drop them here. We also drop na values and convert the date to character for later
 
 ```{r}
 #Define columns to leave out 
-not_columns <- c("Season_End_Year", "Age", "Born", "Url", "Prog", "A_minus_xA")
+not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP")
 
-#Select only columns that we need
-player_standard <- standard_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+type_list_raw <- list(standard_stats, shooting_stats, passing_stats, passing_types_stats, gca_stats, defense_stats, possession_stats, playing_time_stats, misc_stats, keepers_stats, keepers_adv_stats)
 
-player_shooting <- shooting_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+type_list <- lapply(type_list_raw, function(x) x %>% 
+                      dplyr::select(-any_of(not_columns)) %>% 
+                      na.omit(.))
 
-player_passing <- passing_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_gca <- gca_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_defense <- defense_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_possession <- possession_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_playing_time <- playing_time_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_misc <- misc_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_keepers <- keepers_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
-
-player_keepers_adv <- keepers_adv_raw %>% dplyr::select(-any_of(not_columns)) %>% na.omit(.)
+type_list <- setNames(type_list, stat_types)
 ```
 
 # Converting to Stats
@@ -73,47 +62,47 @@ We next convert each column of each data-frame to percentiles, which we can imag
 'attributes'
 
 ```{r}
-
-#Loop converting stat columns to percentile ranks
-for (col in colnames(dplyr::select(player_standard, where(is.numeric)))){
-  player_standard[col] <- round(cume_dist(player_standard[col])*100)
+for (type in stat_types){
+  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric), -Season_End_Year))){
+    type_list[[type]][col] <- round(cume_dist(type_list[[type]][col])*100)
+  }
 }
+```
 
-for (col in colnames(dplyr::select(player_shooting, where(is.numeric)))){
-  player_shooting[col] <- round(cume_dist(player_shooting[col])*100)
-}
+# Finding Transfers 
 
-for (col in colnames(dplyr::select(player_passing, where(is.numeric)))){
-  player_passing[col] <- round(cume_dist(player_passing[col])*100)
-}
+```{r}
+test <- type_list[["passing"]]
+test
+```
 
-for (col in colnames(dplyr::select(player_gca, where(is.numeric)))){
-  player_gca[col] <- round(cume_dist(player_gca[col])*100)
-}
+```{r}
+transferred_player <-  test %>% 
+                        group_by(Player) %>% 
+                        dplyr::filter(n_distinct(Squad) > 1) %>% 
+                        ungroup()
 
-for (col in colnames(dplyr::select(player_defense, where(is.numeric)))){
-  player_defense[col] <- round(cume_dist(player_defense[col])*100)
-}
+transferred_player
+```
 
-for (col in colnames(dplyr::select(player_possession, where(is.numeric)))){
-  player_possession[col] <- round(cume_dist(player_possession[col])*100)
-}
+```{r}
+test %>% dplyr::filter(test["Season_End_Year"] == 2023)
+```
 
-for (col in colnames(dplyr::select(player_playing_time, where(is.numeric)))){
-  player_playing_time[col] <- round(cume_dist(player_playing_time[col])*100)
-}
+```{r}
+messi <- transferred_player %>% dplyr::filter(transferred_player["Player"] == "Lionel Messi")
+```
 
-for (col in colnames(dplyr::select(player_misc, where(is.numeric)))){
-  player_misc[col] <- round(cume_dist(player_misc[col])*100)
-}
+We wish to find averages of the statistics at each club, which we can then use to calculate the differences between leagues
 
-for (col in colnames(dplyr::select(player_keepers, where(is.numeric)))){
-  player_keepers[col] <- round(cume_dist(player_keepers[col])*100)
-}
+```{r}
+#First we calculate averages across each team the player has played for
+messi %>% group_by(Squad, Player, Comp) %>% 
+          summarise(across(where(is.numeric), mean),
+                    .groups = 'drop')
+```
+```{r}
 
-for (col in colnames(dplyr::select(player_keepers_adv, where(is.numeric)))){
-  player_keepers_adv[col] <- round(cume_dist(player_keepers_adv[col])*100)
-}
 ```
 
 #Write to csv
