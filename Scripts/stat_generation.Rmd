@@ -43,7 +43,7 @@ There are numeric columns that we don't need, so we drop them here. We also drop
 
 ```{r}
 #Define columns to leave out 
-not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP", "Season_End_Year")
+not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP")
 
 type_list_raw <- list(standard_stats, shooting_stats, passing_stats, passing_types_stats, gca_stats, defense_stats, possession_stats, playing_time_stats, misc_stats, keepers_stats, keepers_adv_stats)
 
@@ -62,7 +62,7 @@ We next convert each column of each data-frame to percentiles, which we can imag
 
 ```{r}
 for (type in stat_types){
-  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric)))){
+  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric), -Season_End_Year))){
     type_list[[type]][col] <- round(cume_dist(type_list[[type]][col])*100)
   }
 }
@@ -85,7 +85,8 @@ transferred_player
 ```
 
 ```{r}
-messi <- transferred_player %>% dplyr::filter(transferred_player["Player"] == "Lionel Messi")
+messi <- transferred_player %>% dplyr::filter(transferred_player["Player"] == "Aaron Ramsdale")
+messi
 ```
 
 We wish to find averages of the statistics at each club, which we can then use to calculate the differences between leagues
@@ -93,12 +94,66 @@ We wish to find averages of the statistics at each club, which we can then use t
 ```{r}
 #First we calculate averages across each team the player has played for
 messi <- messi %>% group_by(Squad, Player, Comp) %>% 
-          summarise(across(where(is.numeric), mean),
+          summarise(across(where(is.double), mean),
                     .groups = 'drop')
+
+messi 
 ```
 
 ```{r}
-diff(as.matrix(dplyr::select(messi, where(is.numeric))), lag = 1)
+transfer_gen <- function(x) {
+  
+  squad_changes <- data.frame()
+  
+  for(i in 1:(nrow(x)-1)){
+    temp <- x[i:(i+1), ]
+    temp <- temp %>% dplyr::select(!where(is.double)) %>% 
+              rownames_to_column(var = "id") %>%
+              pivot_wider(names_from = id, values_from = !id)
+    temp <- temp %>% mutate(Player = coalesce(Player_1, Player_2))
+    temp <- temp %>% dplyr::select(-c("Player_1", "Player_2"))
+    squad_changes <- rbind(squad_changes, temp)
+  }
+  
+  stat_changes <- data.frame(diff(as.matrix(dplyr::select(x, where(is.numeric))), lag = 1))
+  
+  to_return <- data.frame(squad_changes, stat_changes)
+  
+  return(to_return)
+}
+
+transfer_gen(messi)
+```
+
+```{r}
+transfers <- transferred_player %>% group_by(Player, Squad, Comp) %>% 
+                        summarise(across(where(is.numeric), mean),
+                          .groups = 'drop')
+```
+
+```{r}
+
+```
+
+```{r}
+transfer_changes <- data.frame()
+
+transferred_player_list <- as.list(unique(transfers["Player"]))
+
+transferred_player_list$Player[1]
+```
+
+```{r}
+for (player in transferred_player_list$Player){
+  player_info <- transfers %>% dplyr::filter(transfers["Player"] == player)
+  transfer_changes <- rbind(transfer_changes, transfer_gen(player_info))
+  print(player)
+}
+
+```
+
+```{r}
+transfer_changes
 ```
 
 #Write to csv
