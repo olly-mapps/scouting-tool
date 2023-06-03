@@ -1,6 +1,5 @@
 ---
 title: "diff_gen"
-output: html_notebook
 author: "olly-mapps"
 ---
 
@@ -38,6 +37,8 @@ for (type in stat_types){
   assign(paste(type, "_stats", sep = ""), get("temp"))
 }
 ```
+
+# Data Wrangling
 
 There are numeric columns that we don't need, so we drop them here. We also drop na values and convert the date to character for later
 
@@ -95,6 +96,8 @@ for (type in stat_types){
 }
 ```
 
+# Calculating Stats
+
 We next calculate the averages the stats over each players time at each club 
 
 ```{r}
@@ -107,6 +110,8 @@ for (type in stat_types){
                           .groups = 'drop')
 }
 ```
+
+# Writing Stats Differences
 
 We next define a function that calculates the difference in percentiles between each transfer, and then produces a more manageable dataframe
 
@@ -187,7 +192,7 @@ for (type in stat_types){
 
 ```
 
-#Write to csv
+## Write to csv
 
 We finally write or dataframes to .csv files
 
