@@ -1,0 +1,206 @@
+---
+title: "diff_gen"
+output: html_notebook
+author: "olly-mapps"
+---
+
+Contained in this notebook is the sandbox for code that I plan to use for a football scouting tool 
+
+
+# Libraries
+```{r}
+library(tidyverse)
+library(worldfootballR)
+```
+
+# Data Loading
+
+We first define stat types to extract from worldsoccerR
+
+```{r}
+#Define stat types
+stat_types = c("standard", "shooting", "passing", "passing_types", "gca", "defense", "possession", "playing_time", "misc", "keepers", "keepers_adv")
+```
+
+We next define a loop to extract these data based on the stat type
+
+```{r}
+#Define loop to iterate through the stat types
+for (type in stat_types){
+  
+  #Load the data for the specific type
+  temp <- data.frame(load_fb_big5_advanced_season_stats(stat_type = type, 
+                                             team_or_player = "player"))
+  #Print type to assess progress
+  print(type)
+  
+  #Assign the data a suitable name
+  assign(paste(type, "_stats", sep = ""), get("temp"))
+}
+```
+
+There are numeric columns that we don't need, so we drop them here. We also drop na values and convert the date to character for later
+
+```{r}
+#Define columns to leave out 
+not_columns <- c("Age", "Born", "Prog", "A_minus_xA", "xAG", "A_minus_xAG", "PrgP")
+
+#Create list of different types of stats scraped with worldsoccerR
+type_list_raw <- list(standard_stats, shooting_stats, passing_stats, passing_types_stats, gca_stats, defense_stats, possession_stats, playing_time_stats, misc_stats, keepers_stats, keepers_adv_stats)
+
+#Define a new list that cleans the data
+type_list <- lapply(type_list_raw, function(x) x %>% 
+                      
+                      #Remove columns defined above
+                      dplyr::select(-any_of(not_columns)) %>%
+                      
+                      #Removed na values
+                      na.omit(.))
+
+#Set the names of each element of the list to the stat type it represents
+type_list <- setNames(type_list, stat_types)
+```
+
+# Converting to Stats
+
+We next convert each column of each data-frame to percentiles, which we can imagine as standardized
+'attributes'
+
+```{r}
+#Define for loop to cycle through each stat type in the list
+for (type in stat_types){
+  
+  #Define for loop to cycle through each numeric value in the dataframe, apart from season year
+  for (col in colnames(dplyr::select(type_list[[type]], where(is.numeric), -Season_End_Year))){
+    
+    #Calculate cumulative distribution percentile, and multiply by 100
+    type_list[[type]][col] <- round(cume_dist(type_list[[type]][col])*100)
+  }
+}
+```
+
+
+# Finding Transfers 
+
+We first filter to only include players who have had strictly more than 1 squad, this in effect filters only those players who have transferred.
+
+```{r}
+#Define for loop to cycle through each stat type
+for (type in stat_types){
+  
+  #Overwrite each data frame with players with a number of distinct squads greater than 1
+  type_list[[type]] <- type_list[[type]] %>% group_by(Player) %>% 
+                        dplyr::filter(n_distinct(Squad) > 1) %>% 
+                        ungroup()
+}
+```
+
+We next calculate the averages the stats over each players time at each club 
+
+```{r}
+#Define a for loop to cycle through each stat type
+for (type in stat_types){
+  
+  #Overwrite each data frame with the means of each statistic during their time at each club
+  type_list[[type]] <- type_list[[type]] %>% group_by(Player, Squad, Comp) %>% 
+                        summarise(across(where(is.numeric), mean),
+                          .groups = 'drop')
+}
+```
+
+We next define a function that calculates the difference in percentiles between each transfer, and then produces a more manageable dataframe
+
+```{r}
+#Define function to generate new dataframe
+transfer_gen <- function(x) {
+  
+  #Define empty dataframe to store stat changes between clubs
+  squad_changes <- data.frame()
+  
+  #Sort by year so the differences are calculated in correct order
+  x <- x %>% arrange(Season_End_Year)
+  
+  #For loop to cycle through each year
+  for(i in 1:(nrow(x)-1)){
+    
+    #Define a temp variable to describe each pair of rows
+    temp <- x[i:(i+1), ]
+    
+    #Flatten data frame to describe the change of squad and league
+    temp <- temp %>% dplyr::select(!where(is.double)) %>% 
+              rownames_to_column(var = "id") %>%
+              pivot_wider(names_from = id, values_from = !id)
+    
+    #Merge the player columns since they will always be identical
+    temp <- temp %>% mutate(Player = coalesce(Player_1, Player_2))
+    temp <- temp %>% dplyr::select(-c("Player_1", "Player_2"))
+    
+    #Bind this players data to the overall changes dataframe
+    squad_changes <- rbind(squad_changes, temp)
+  }
+  
+  #Calculate differences between stats in each transfer
+  stat_changes <- data.frame(diff(as.matrix(dplyr::select(x, where(is.numeric))), lag = 1))
+  
+  #Merge the two dataframes
+  to_return <- data.frame(squad_changes, stat_changes)
+  
+  #Drop season year as it is no longer useful
+  to_return <- to_return %>% dplyr::select(-Season_End_Year)
+  
+  #Return final data frame
+  return(to_return)
+}
+```
+
+We now apply this function to each data-set (Will take ages to run)
+
+```{r}
+#Define for loop to cycle through each stat type
+for (type in stat_types){
+  
+  #Define empty data frame to hold stat changes for each stat type
+  type_stat_changes <- data.frame()
+  
+  #Define list of unique players, so we can cycle through them in the for loop
+  transferred_player_list <- as.list(unique(type_list[[type]]["Player"]))
+  
+  #Define for loop to cycle through each player
+  for (player in transferred_player_list$Player){
+    
+    #Filter the stat dataframe to only the transfers concerning the given player
+    player_info <- type_list[[type]] %>% dplyr::filter(type_list[[type]]["Player"] == player)
+    
+    #Bind the new dataframe to the stat changes data frame for this type
+    type_stat_changes <- rbind(type_stat_changes, transfer_gen(player_info))
+  
+  }
+  
+  #Assign this new dataframe a suitable name
+  assign(paste(type, "_changes", sep = ""), get("type_stat_changes"))
+  
+  #Print type to assess progress
+  print(type)
+  
+}
+
+
+```
+
+#Write to csv
+
+We finally write or dataframes to .csv files
+
+```{r}
+write.csv(standard_changes, "../Data/standard_changes.csv")
+write.csv(shooting_changes, "../Data/shooting_changes.csv")
+write.csv(passing_changes, "../Data/passing_changes.csv")
+write.csv(gca_changes, "../Data/gca_changes.csv")
+write.csv(defense_changes, "../Data/defense_changes.csv")
+write.csv(possession_changes, "../Data/possession_changes.csv")
+write.csv(playing_time_changes, "../Data/playing_time_changes.csv")
+write.csv(misc_changes, "../Data/misc_changes.csv")
+write.csv(keepers_changes, "../Data/keepers_changes.csv")
+write.csv(keepers_adv_changes, "../Data/keepers_adv_changes.csv")
+```
+
