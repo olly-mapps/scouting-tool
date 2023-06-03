@@ -111,7 +111,38 @@ for (type in stat_types){
 }
 ```
 
-# Writing Stats Differences
+# Writing Stats
+
+We first want to filter out the observations that lead to a transfer.
+
+```{r}
+for (type in stat_types){
+  
+  temp <- type_list[[type]] %>% 
+          group_by(Player) %>%
+          arrange(Season_End_Year) %>% 
+          slice(1:(n()-1))
+  
+  assign(paste(type, "_from", sep = ""), get("temp"))
+}
+```
+
+We write now write the data to csv
+
+```{r}
+write.csv(standard_from, "../Data/standard_from.csv")
+write.csv(shooting_from, "../Data/shooting_from.csv")
+write.csv(passing_from, "../Data/passing_from.csv")
+write.csv(gca_from, "../Data/gca_from.csv")
+write.csv(defense_from, "../Data/defense_from.csv")
+write.csv(possession_from, "../Data/possession_from.csv")
+write.csv(playing_time_from, "../Data/playing_time_from.csv")
+write.csv(misc_from, "../Data/misc_from.csv")
+write.csv(keepers_from, "../Data/keepers_from.csv")
+write.csv(keepers_adv_from, "../Data/keepers_adv_from.csv")
+```
+
+# Calculating Stats Differences
 
 We next define a function that calculates the difference in percentiles between each transfer, and then produces a more manageable dataframe
 
