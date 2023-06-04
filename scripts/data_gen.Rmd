@@ -130,16 +130,17 @@ for (type in stat_types){
 We write now write the data to csv
 
 ```{r}
-write.csv(standard_from, "../Data/standard_from.csv")
-write.csv(shooting_from, "../Data/shooting_from.csv")
-write.csv(passing_from, "../Data/passing_from.csv")
-write.csv(gca_from, "../Data/gca_from.csv")
-write.csv(defense_from, "../Data/defense_from.csv")
-write.csv(possession_from, "../Data/possession_from.csv")
-write.csv(playing_time_from, "../Data/playing_time_from.csv")
-write.csv(misc_from, "../Data/misc_from.csv")
-write.csv(keepers_from, "../Data/keepers_from.csv")
-write.csv(keepers_adv_from, "../Data/keepers_adv_from.csv")
+write.csv(standard_from, "../Data/_from/standard_from.csv")
+write.csv(shooting_from, "../Data/_from/shooting_from.csv")
+write.csv(passing_from, "../Data/_from/passing_from.csv")
+write.csv(passing_types_from, "../Data/_from/passing_types_from.csv")
+write.csv(gca_from, "../Data/_from/gca_from.csv")
+write.csv(defense_from, "../Data/_from/defense_from.csv")
+write.csv(possession_from, "../Data/_from/possession_from.csv")
+write.csv(playing_time_from, "../Data/_from/playing_time_from.csv")
+write.csv(misc_from, "../Data/_from/misc_from.csv")
+write.csv(keepers_from, "../Data/_from/keepers_from.csv")
+write.csv(keepers_adv_from, "../Data/_from/keepers_adv_from.csv")
 ```
 
 # Calculating Stats Differences
@@ -228,15 +229,16 @@ for (type in stat_types){
 We finally write or dataframes to .csv files
 
 ```{r}
-write.csv(standard_changes, "../Data/standard_changes.csv")
-write.csv(shooting_changes, "../Data/shooting_changes.csv")
-write.csv(passing_changes, "../Data/passing_changes.csv")
-write.csv(gca_changes, "../Data/gca_changes.csv")
-write.csv(defense_changes, "../Data/defense_changes.csv")
-write.csv(possession_changes, "../Data/possession_changes.csv")
-write.csv(playing_time_changes, "../Data/playing_time_changes.csv")
-write.csv(misc_changes, "../Data/misc_changes.csv")
-write.csv(keepers_changes, "../Data/keepers_changes.csv")
-write.csv(keepers_adv_changes, "../Data/keepers_adv_changes.csv")
+write.csv(standard_changes, "../Data/_changes/standard_changes.csv")
+write.csv(shooting_changes, "../Data/_changes/shooting_changes.csv")
+write.csv(passing_changes, "../Data/_changes/passing_changes.csv")
+write.csv(passing_types_changes, "../Data/_from/passing_types_changes.csv")
+write.csv(gca_changes, "../Data/_changes/gca_changes.csv")
+write.csv(defense_changes, "../Data/_changes/defense_changes.csv")
+write.csv(possession_changes, "../Data/_changes/possession_changes.csv")
+write.csv(playing_time_changes, "../Data/_changes/playing_time_changes.csv")
+write.csv(misc_changes, "../Data/_changes/misc_changes.csv")
+write.csv(keepers_changes, "../Data/_changes/keepers_changes.csv")
+write.csv(keepers_adv_changes, "../Data/_changes/keepers_adv_changes.csv")
 ```
 

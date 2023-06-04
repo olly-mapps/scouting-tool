@@ -1,0 +1,81 @@
+---
+title: "exploration"
+author: "olly-mapps"
+---
+
+# Libraries
+
+We first load in the necessary libraries
+```{r}
+library(tidyverse)
+library(worldfootballR)
+```
+
+# Data Loading
+
+We want to load both the possession differences we generated, and the raw possession stats from fbref
+
+```{r}
+from_d <- list.files(path = "../data/_from/", full.names = T, pattern="*.csv")
+from_files <- lapply(from_d, read.csv)
+```
+
+```{r}
+change_d <- list.files(path = "../data/_changes/", full.names = T, pattern="*.csv")
+change_files <- lapply(change_d, read.csv)
+```
+
+# Data Cleaning
+
+## Appending appropriate suffix
+
+```{r}
+from_files <- lapply(from_files, function(x) {
+  colnames(x) <- paste(colnames(x), "from", sep = "_")
+  return(x)
+})
+
+change_files <- lapply(change_files, function(x) {
+  colnames(x) <- paste(colnames(x), "change", sep = "_")
+  return(x)
+})
+```
+
+## Merging data
+
+```{r}
+from_change_merge <- function(from, change){
+  data <- from %>% inner_join(change, 
+        by=c('Player_from'='Player_change', 
+             'Squad_from'='Squad_1_change',
+             'Comp_from' = 'Comp_1_change'))
+  
+  data <- data %>% dplyr::select(-c("X_change", "X_from", "Season_End_Year_from", "X_change"))
+  
+  return(data)
+}
+
+stat_types <- c("defense", "gca", "keepers_adv", "keepers", "misc", "passing", "playing_time", "possession", "shooting", "standard")
+```
+
+```{r}
+for (i in 1:length(from_files)){
+  temp <- from_change_merge(from_files[[i]], change_files[[i]])
+  assign(paste(stat_types[i], "_data", sep = ""), get("temp"))
+}
+```
+
+# Writing Data
+
+```{r}
+write.csv(standard_data, "../data/_data/standard_data.csv")
+write.csv(shooting_data, "../data/_data/shooting_data.csv")
+write.csv(passing_data, "../data/_data/passing_data.csv")
+write.csv(gca_data, "../data/_data/gca_data.csv")
+write.csv(defense_data, "../data/_data/defense_data.csv")
+write.csv(possession_data, "../data/_data/possession_data.csv")
+write.csv(playing_time_data, "../data/_data/playing_time_data.csv")
+write.csv(misc_data, "../data/_data/misc_data.csv")
+write.csv(keepers_data, "../data/_data/keepers_data.csv")
+write.csv(keepers_adv_data, "../data/_data/keepers_adv_data.csv")
+```

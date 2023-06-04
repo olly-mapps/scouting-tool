@@ -1,0 +1,42 @@
+---
+title: "R Notebook"
+author: "olly-mapps"
+---
+
+# Libraries
+
+```{r}
+library(tidyverse)
+```
+
+# Loading Data 
+
+```{r}
+poss_data <- read.csv("../data/_data/possession_data.csv")
+```
+
+# Models
+
+We first define our test and train sets
+
+```{r}
+sample <- sample(c(TRUE, FALSE), nrow(poss_data), replace=TRUE, prob=c(0.8,0.2))
+train  <- poss_data[sample, ]
+test   <- poss_data[!sample, ]
+```
+
+```{r}
+Y <- poss_data %>% dplyr::select(where(is.numeric) & ends_with("_change")) %>% colnames()
+
+X <- poss_data %>% dplyr::select(-all_of(colnames(Y)) & -X) %>% colnames()
+```
+
+```{r}
+models <- poss_data %>% group_by(Comp_2_change) %>% 
+              do(model = lm(Att_Take_change ~ Att_Take_from + Comp_from, data = .))
+```
+
+```{r}
+models$model
+```
+
