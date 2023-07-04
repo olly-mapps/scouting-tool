@@ -15,6 +15,10 @@ library(tidyverse)
 poss_data <- read.csv("../data/_data/possession_data.csv")
 ```
 
+```{r}
+poss_data
+```
+
 # Models
 
 We first define our test and train sets
@@ -32,11 +36,18 @@ X <- poss_data %>% dplyr::select(-all_of(colnames(Y)) & -X) %>% colnames()
 ```
 
 ```{r}
-models <- poss_data %>% group_by(Comp_2_change) %>% 
+models <- train %>% group_by(Comp_2_change) %>% 
               do(model = lm(Att_Take_change ~ Att_Take_from + Comp_from, data = .))
 ```
 
 ```{r}
-models$model
+models$model[[1]]
+```
+```{r}
+la_liga_pred <- predict(models$model[[1]], test)
+```
+
+```{r}
+cbind(test, la_liga_pred) %>% dplyr::select("Player_from", "Att_Take_change", "la_liga_pred")
 ```
 
