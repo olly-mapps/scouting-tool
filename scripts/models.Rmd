@@ -32,9 +32,9 @@ test   <- poss_data[!sample, ]
 ```{r}
 Y.train <- train %>% dplyr::select(where(is.numeric) & ends_with("_change"), -Att_Take_change)
 
-X.train <- train %>% dplyr::select(-all_of(colnames(Y.train)), -X, -Player_from)
+X.train <- train %>% dplyr::select(-all_of(colnames(Y.train)), -X, -Player_from, -Squad_from, -Squad_2_change)
 
-X.train.names <- X.train %>% dplyr::select(-Comp_2_change) %>% colnames() 
+#X.train.names <- X.train %>% dplyr::select(-Comp_2_change) %>% colnames() 
 
 ```
 
@@ -43,15 +43,15 @@ X.train.names
 ```
 
 ```{r}
-models <- X.train %>% group_by(Comp_2_change) %>% 
-              do(model = lm(Att_Take_change ~ X.train.names, data = .))
+models <- lm(Att_Take_change ~ . : Comp_2_change, data = X.train)
 ```
 
 ```{r}
-models$model[[1]]
+summary(models)
 ```
+
 ```{r}
-la_liga_pred <- predict(models$model[[1]], test)
+la_liga_pred <- predict(models, test)
 ```
 
 ```{r}
